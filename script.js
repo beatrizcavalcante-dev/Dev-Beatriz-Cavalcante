@@ -84,6 +84,15 @@ const svg = document.getElementById('particles');
         img: 'img/projeto0.PNG',   
         link: 'https://beatrizcavalcante-dev.github.io/WebMusic/'  
     },
+  
+    {
+      title: 'Stock — Sistema de Estoque',
+      desc: 'Sistema web full-stack de gerenciamento de estoque com dashboard, cadastro de produtos, controle de entradas e saídas, histórico de movimentações e alertas de estoque baixo.',
+      tags: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Express', 'SQLite'],
+      img: 'img/projeto7.PNG',
+      link: 'https://beatrizcavalcante-dev.github.io/estoque-app/'
+    },  
+
     {
         title: 'Landing E-commerce',
         desc: 'Página de apresentação para startup de tecnologia com design moderno e responsivo.',
@@ -146,8 +155,69 @@ const svg = document.getElementById('particles');
     function goTo(n) { current = n; renderProject(); }
     document.getElementById('prev-btn').onclick = () => goTo((current - 1 + projects.length) % projects.length);
     document.getElementById('next-btn').onclick = () => goTo((current + 1) % projects.length);
-    renderProject();
 
-    document.getElementById('contact-card-wrap').addEventListener('click', () => {
-      document.getElementById('contact-card').classList.toggle('flipped');
-});
+
+    const colors = [
+      '#e0b8f8',
+      '#d63ad4', 
+      '#9b4de0',
+      '#c9b8f0',
+      '#ffffff'
+    ]
+
+    let lastX = 0, lastY = 0
+
+    document.addEventListener('mousemove', function(e) {
+      const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY)
+      if (dist < 8) return // só cria partícula se o mouse mover o suficiente
+    
+      lastX = e.clientX
+      lastY = e.clientY
+    
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const p = document.createElement('div')
+          const size = Math.random() * 5 + 2
+          const color = colors[Math.floor(Math.random() * colors.length)]
+          const angle = Math.random() * Math.PI * 2
+          const dist = Math.random() * 25 + 8
+        
+          p.style.cssText = `
+            position:fixed;
+            width:${size}px;
+            height:${size}px;
+            background:${color};
+            box-shadow:0 0 ${size * 2}px ${color};
+            border-radius:50%;
+            left:${e.clientX}px;
+            top:${e.clientY}px;
+            pointer-events:none;
+            z-index:9999;
+            transition:transform 0.8s ease-out, opacity 0.8s ease-out;
+            will-change:transform,opacity;
+          `
+        
+          document.body.appendChild(p)
+        
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              p.style.transform = `translate(
+                calc(-50% + ${Math.cos(angle) * dist}px),
+                calc(-50% + ${Math.sin(angle) * dist}px)
+              )`
+              p.style.opacity = '0'
+            })
+          })
+        
+          setTimeout(() => p.remove(), 900)
+        }, i * 40)
+      }
+    })
+
+
+renderProject();
+
+    
+
+
+
