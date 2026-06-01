@@ -30,11 +30,19 @@ html, body {
 a { text-decoration:none; }
 
 @keyframes spin       { to{transform:rotate(360deg)} }
-@keyframes floatUD    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 @keyframes pulse-dot  { 0%,100%{opacity:.4} 50%{opacity:1} }
 @keyframes bounce     { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 @keyframes blink      { 0%,100%{opacity:1} 50%{opacity:0} }
 @keyframes neon-pulse { 0%,100%{box-shadow:0 0 12px var(--purple),0 0 24px #9b4de040} 50%{box-shadow:0 0 24px var(--pink),0 0 48px #d63ad460} }
+
+@keyframes wobble-hor-bottom {
+  0%,100%{transform:translateX(0%);transform-origin:50% 50%}
+  15%{transform:translateX(-30px) rotate(-6deg)}
+  30%{transform:translateX(15px) rotate(6deg)}
+  45%{transform:translateX(-15px) rotate(-3.6deg)}
+  60%{transform:translateX(9px) rotate(2.4deg)}
+  75%{transform:translateX(-6px) rotate(-1.2deg)}
+}
 
 .reveal { 
   opacity:0; 
@@ -498,7 +506,6 @@ section {
   letter-spacing:.1em; 
 }
 
-
 .skills-grid { 
   display:grid; 
   grid-template-columns:repeat(4,1fr); 
@@ -509,45 +516,32 @@ section {
 .skill-item { 
   position:relative; 
   display:flex; 
+  flex-direction:column; 
   align-items:center; 
-  justify-content:center; 
-  cursor:default; 
-}
+  gap:.55rem; 
+  cursor:default; }
 
 .skill-item svg { 
   color:var(--lavender); 
   filter:drop-shadow(0 0 7px #9b4de060); 
-  transition:filter .3s,
-  transform .3s; 
+  transition:filter .3s;
 }
 
 .skill-item:hover svg { 
+  animation:wobble-hor-bottom 0.06s both;
   filter:drop-shadow(0 0 16px var(--pink)) drop-shadow(0 0 8px var(--purple)); 
-  transform:scale(1.18); 
 }
 
-.skill-tooltip { 
-  display:none; 
-  position:absolute; 
-  bottom:calc(100% + 12px); 
-  left:50%; 
-  transform:translateX(-50%); 
-  background:#120820f0; 
-  border:1px solid #9b4de080; 
-  border-radius:4px; 
-  padding:4px 12px; 
-  font-family:'Space Grotesk',sans-serif; 
-  font-size:.68rem; 
-  color:var(--lavender); 
-  white-space:nowrap; 
-  letter-spacing:.1em; 
-  text-transform:uppercase; 
-  box-shadow:0 0 14px #d63ad430; 
-  pointer-events:none; 
-  z-index:10; 
+.skill-name {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.65rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--softBlue);
+  transition:color .2s;
 }
-
-.skill-item:hover .skill-tooltip { display:block; }
+.skill-item:hover .skill-name { color:var(--lavender); }
+.skill-tooltip { display:none !important; }
 
 #contato { 
   flex-direction:column; 
@@ -586,21 +580,12 @@ section {
   align-items:center; 
   justify-content:center; 
   width:72px; 
-  height:72px; 
-  border-radius:50%; 
-  border:1px solid #9b4de060; 
-  background:#9b4de015; 
+  height:72px;   
   color:var(--lavender);
   transition:all .25s;
 }
 
-.contact-icon-btn:nth-child(1) { animation:floatUD 3s ease-in-out infinite; }
-
-.contact-icon-btn:nth-child(2) { animation:floatUD 3s ease-in-out infinite; animation-delay:.6s; }
-
 .contact-icon-btn svg { filter:drop-shadow(0 0 7px #9b4de060); transition:filter .3s,transform .3s; }
-
-.contact-icon-btn:hover { background:#d63ad430; border-color:var(--pink); box-shadow:0 0 20px #d63ad460; }
 
 .contact-icon-btn:hover svg { filter:drop-shadow(0 0 16px var(--pink)) drop-shadow(0 0 8px var(--purple)); transform:scale(1.18); }
 

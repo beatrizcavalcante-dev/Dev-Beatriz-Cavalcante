@@ -5,19 +5,24 @@ const svg = document.getElementById('particles');
       {x:55,y:75},{x:72,y:80},{x:88,y:65},{x:5,y:80},{x:38,y:88},{x:93,y:85},
       {x:48,y:28},{x:12,y:58}
     ];
+
     const LINES = [
       [0,1],[1,2],[2,18],[18,3],[3,4],[4,5],[5,6],[7,11],[11,15],[7,19],
       [8,9],[9,10],[12,13],[13,14],[12,11],[8,18],[9,4],[13,10]
     ];
+
     LINES.forEach(([a,b]) => {
       const l = document.createElementNS('http://www.w3.org/2000/svg','line');
+      
       l.setAttribute('x1',DOTS[a].x); l.setAttribute('y1',DOTS[a].y);
       l.setAttribute('x2',DOTS[b].x); l.setAttribute('y2',DOTS[b].y);
       l.setAttribute('stroke','#7546e8'); l.setAttribute('stroke-width','0.15'); l.setAttribute('stroke-opacity','0.6');
       svg.appendChild(l);
     });
+
     DOTS.forEach((d,i) => {
       const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+
       c.setAttribute('cx',d.x); c.setAttribute('cy',d.y);
       c.setAttribute('r', i%4===0 ? '0.6' : '0.35');
       c.setAttribute('fill', i%3===0 ? '#c8b3f6' : '#7546e8');
@@ -27,8 +32,11 @@ const svg = document.getElementById('particles');
     });
     
     const typedEl = document.getElementById('typed-text');
+
     const fullText = 'Desenvolvedora Front-End em Formação';
+
     let i = 0, deleting = false;
+    
     function tick() {
       if (!deleting) {
         i++;
@@ -54,9 +62,11 @@ const svg = document.getElementById('particles');
       backTop.classList.toggle('visible', root.scrollTop > 300);
 
       let current = '';
+
       sections.forEach(sec => {
         if (root.scrollTop >= sec.offsetTop - 200) current = sec.id;
       });
+
       navLinks.forEach(l => l.classList.toggle('active', l.dataset.target === current));
     });
 
@@ -67,9 +77,9 @@ const svg = document.getElementById('particles');
     });
 
     backTop.addEventListener('click', () => root.scrollTo({ top: 0, behavior: 'smooth' }));
-
     
     const revealEls = document.querySelectorAll('.reveal');
+
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
     }, { threshold: 0.12 });
@@ -169,7 +179,7 @@ const svg = document.getElementById('particles');
 
     document.addEventListener('mousemove', function(e) {
       const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY)
-      if (dist < 8) return // só cria partícula se o mouse mover o suficiente
+      if (dist < 8) return 
     
       lastX = e.clientX
       lastY = e.clientY
