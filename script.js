@@ -79,7 +79,7 @@ const svg = document.getElementById('particles');
     const projects = [
     {
         title: 'Web Music',
-        desc: 'Interface intuitiva de um reprodutor de musica online.',
+        desc: 'Experiência musical reimaginada — player online com interface clean, controles fluidos e design que coloca a música em primeiro lugar.',
         tags: ['Figma', 'HTML', 'CSS', 'JavaScript'],
         img: 'img/projeto0.PNG',   
         link: 'https://beatrizcavalcante-dev.github.io/WebMusic/'  
@@ -102,7 +102,7 @@ const svg = document.getElementById('particles');
     },
     {
         title: 'Protótipo App Streaming',
-        desc: 'Criação de um Protótipo de Aplicativo Streaming. Desenvolvido para trabalho da Faculdade.',
+        desc: 'Landing page de alto impacto para e-commerce — layout responsivo, hierarquia visual estratégica e foco total em conversão.',
         tags: ['Figma', 'Design'],
         img: 'img/projeto3.PNG',
         link: 'https://www.figma.com/design/tIgTY8awAO0lw6nQLN2LN8/Prot%C3%B3tipo-Crunchyroll?node-id=0-1&m=dev&t=77SNFcqhYkpqY5N9-1'
