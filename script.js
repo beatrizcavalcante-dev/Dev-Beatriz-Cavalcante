@@ -50,6 +50,57 @@ const svg = document.getElementById('particles');
       setTimeout(tick, deleting ? 35 : 65);
     }
     setTimeout(tick, 300);
+
+    const terminalEl = document.getElementById('terminal-text');
+
+    const terminalText = 'CONTACT TERMINAL';
+
+    let terminalIndex = 0;
+    let terminalDeleting = false;
+
+    function terminalTick() {
+
+      if (!terminalDeleting) {
+
+        terminalIndex++;
+
+        terminalEl.textContent =
+          terminalText.slice(0, terminalIndex);
+
+        if (terminalIndex === terminalText.length) {
+
+          setTimeout(() => {
+            terminalDeleting = true;
+            terminalTick();
+          }, 2500);
+
+          return;
+        }
+
+      } else {
+
+        terminalIndex--;
+
+        terminalEl.textContent =
+          terminalText.slice(0, terminalIndex);
+
+        if (terminalIndex === 0) {
+
+          terminalDeleting = false;
+
+          setTimeout(terminalTick, 500);
+
+          return;
+        }
+      }
+
+      setTimeout(
+        terminalTick,
+        terminalDeleting ? 50 : 90
+      );
+    }
+
+    setTimeout(terminalTick, 1000);
     
     const root = document.getElementById('scroll-root');
     const navbar = document.getElementById('navbar');
@@ -120,7 +171,7 @@ const svg = document.getElementById('particles');
     {
         title: 'App Streaming',
         desc: 'Protótipo de Aplicativo Streaming Finalizado. Desenvolvido para trabalho da Faculdade.',
-        tags: ['Figma', 'Design', 'HTML', 'CSS', 'JavaScrip'],
+        tags: ['Figma', 'Design', 'HTML', 'CSS', 'JavaScript'],
         img: 'img/projeto5.PNG',
         link: 'https://www.figma.com/design/tIgTY8awAO0lw6nQLN2LN8/Prot%C3%B3tipo-Crunchyroll?node-id=0-1&m=dev&t=77SNFcqhYkpqY5N9-1'
     },
@@ -134,7 +185,7 @@ const svg = document.getElementById('particles');
     {
         title: 'Primeiro Portfólio',
         desc: 'Interface finalizada após criação no Figma',
-        tags: ['Figma', 'Design', 'HTML', 'CSS', 'JavaScrip'],
+        tags: ['Figma', 'Design', 'HTML', 'CSS', 'JavaScript'],
         img: 'img/projeto6.PNG',
         link: 'https://beatrizcavalcante-dev.github.io/Portfolio-BeatrizC/'
     },
@@ -157,7 +208,17 @@ const svg = document.getElementById('particles');
         tagsEl.innerHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
 
         const dotsEl = document.getElementById('carousel-dots');
-        dotsEl.innerHTML = projects.map((_,i) => `<button class="dot${i===current?' active':''}" onclick="goTo(${i})"></button>`).join('');
+        
+        dotsEl.innerHTML = projects.map((_, i) =>
+          `<button class="dot${i === current ? ' active' : ''}"
+          data-index="${i}"></button>`
+        ).join('');
+
+        dotsEl.querySelectorAll('.dot').forEach(dot => {
+          dot.addEventListener('click', () => {
+            goTo(Number(dot.dataset.index));
+          });
+        });
         
         document.getElementById('carousel-counter').textContent = `${current+1} / ${projects.length}`;
     }
@@ -169,61 +230,82 @@ const svg = document.getElementById('particles');
 
     const colors = [
       '#e0b8f8',
-      '#d63ad4', 
+      '#d63ad4',
       '#9b4de0',
       '#c9b8f0',
       '#ffffff'
     ]
 
-    let lastX = 0, lastY = 0
+    if (window.innerWidth > 768) {
 
-    document.addEventListener('mousemove', function(e) {
-      const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY)
-      if (dist < 8) return 
-    
-      lastX = e.clientX
-      lastY = e.clientY
-    
-      for (let i = 0; i < 3; i++) {
-        setTimeout(() => {
-          const p = document.createElement('div')
-          const size = Math.random() * 5 + 2
-          const color = colors[Math.floor(Math.random() * colors.length)]
-          const angle = Math.random() * Math.PI * 2
-          const dist = Math.random() * 25 + 8
-        
-          p.style.cssText = `
-            position:fixed;
-            width:${size}px;
-            height:${size}px;
-            background:${color};
-            box-shadow:0 0 ${size * 2}px ${color};
-            border-radius:50%;
-            left:${e.clientX}px;
-            top:${e.clientY}px;
-            pointer-events:none;
-            z-index:9999;
-            transition:transform 0.8s ease-out, opacity 0.8s ease-out;
-            will-change:transform,opacity;
-          `
-        
-          document.body.appendChild(p)
-        
-          requestAnimationFrame(() => {
+      let lastX = 0
+      let lastY = 0
+
+      document.addEventListener('mousemove', function(e) {
+
+        const dist = Math.hypot(
+          e.clientX - lastX,
+          e.clientY - lastY
+        )
+
+        if (dist < 8) return
+
+        lastX = e.clientX
+        lastY = e.clientY
+
+        for (let i = 0; i < 3; i++) {
+
+          setTimeout(() => {
+
+            const p = document.createElement('div')
+
+            const size = Math.random() * 5 + 2
+
+            const color =
+              colors[Math.floor(Math.random() * colors.length)]
+
+            const angle = Math.random() * Math.PI * 2
+
+            const dist = Math.random() * 25 + 8
+
+            p.style.cssText = `
+              position:fixed;
+              width:${size}px;
+              height:${size}px;
+              background:${color};
+              box-shadow:0 0 ${size * 2}px ${color};
+              border-radius:50%;
+              left:${e.clientX}px;
+              top:${e.clientY}px;
+              pointer-events:none;
+              z-index:9999;
+              transition:transform 0.8s ease-out, opacity 0.8s ease-out;
+              will-change:transform,opacity;
+            `
+
+            document.body.appendChild(p)
+
             requestAnimationFrame(() => {
-              p.style.transform = `translate(
-                calc(-50% + ${Math.cos(angle) * dist}px),
-                calc(-50% + ${Math.sin(angle) * dist}px)
-              )`
-              p.style.opacity = '0'
-            })
-          })
-        
-          setTimeout(() => p.remove(), 900)
-        }, i * 40)
-      }
-    })
 
+              requestAnimationFrame(() => {
+
+                p.style.transform = `translate(
+                  calc(-50% + ${Math.cos(angle) * dist}px),
+                  calc(-50% + ${Math.sin(angle) * dist}px)
+                )`
+
+                p.style.opacity = '0'
+
+              })
+
+            })
+
+            setTimeout(() => p.remove(), 900)
+
+          }, i * 40)
+        }
+      })
+    }
 
 renderProject();
 
