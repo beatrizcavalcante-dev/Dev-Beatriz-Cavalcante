@@ -155,12 +155,21 @@ const svg = document.getElementById('particles');
     },  
 
     {
+        title: 'Jogo Space Shooter',
+        desc: 'Jogo de Nave Espacial desenvolvido com Pygame e Python. Sendo possível também baixar no seu PC',
+        tags: ['Python', 'Pygame', 'StarUML'],
+        img: 'img/jogo.png',
+        link: 'https://github.com/beatrizcavalcante-dev/game-beatriz-cavalcante'
+    },
+
+    {
         title: 'Landing E-commerce',
         desc: 'Página de apresentação para startup de tecnologia com design moderno e responsivo.',
         tags: ['HTML', 'CSS', 'JavaScript'],
         img: 'img/projeto1.PNG',
         link: 'https://beatrizcavalcante-dev.github.io/Landing-e-commerce/'
     },
+
     {
         title: 'Protótipo App Streaming',
         desc: 'Landing page de alto impacto para e-commerce — layout responsivo, hierarquia visual estratégica e foco total em conversão.',
