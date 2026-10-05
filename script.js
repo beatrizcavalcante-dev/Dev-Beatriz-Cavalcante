@@ -49,11 +49,12 @@ const svg = document.getElementById('particles');
       }
       setTimeout(tick, deleting ? 35 : 65);
     }
+
     setTimeout(tick, 300);
 
     const terminalEl = document.getElementById('terminal-text');
 
-    const terminalText = 'CONTACT TERMINAL';
+    const terminalText = 'VAMOS CONVERSAR';
 
     let terminalIndex = 0;
     let terminalDeleting = false;
@@ -107,6 +108,13 @@ const svg = document.getElementById('particles');
     const backTop = document.getElementById('back-top');
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
+    const navHamburger = document.getElementById('nav-hamburger');
+    const navMenu = navbar.querySelector('ul');
+
+    navHamburger.addEventListener('click', () => {
+      navHamburger.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
 
     root.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', root.scrollTop > 30);
@@ -124,6 +132,9 @@ const svg = document.getElementById('particles');
     navLinks.forEach(l => {
       l.addEventListener('click', () => {
         document.getElementById(l.dataset.target).scrollIntoView({ behavior: 'smooth' });
+
+        navHamburger.classList.remove('open');
+        navMenu.classList.remove('open');
       });
     });
 
@@ -135,69 +146,71 @@ const svg = document.getElementById('particles');
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
     }, { threshold: 0.12 });
     revealEls.forEach(el => revealObserver.observe(el));
-
     
     const projects = [
-    {
-        title: 'Web Music',
-        desc: 'Experiência musical reimaginada — player online com interface clean, controles fluidos e design que coloca a música em primeiro lugar.',
-        tags: ['Figma', 'HTML', 'CSS', 'JavaScript'],
-        img: 'img/projeto0.PNG',   
-        link: 'https://beatrizcavalcante-dev.github.io/WebMusic/'  
-    },
-  
-    {
-      title: 'Stock — Sistema de Estoque',
-      desc: 'Sistema web full-stack de gerenciamento de estoque com dashboard, cadastro de produtos, controle de entradas e saídas, histórico de movimentações e alertas de estoque baixo.',
-      tags: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Express', 'SQLite'],
-      img: 'img/projeto7.PNG',
-      link: 'https://beatrizcavalcante-dev.github.io/estoque-app/'
-    },  
+      {
+          title: 'Web Music',
+          desc: 'Player de música desenvolvido como projeto front-end, com interface responsiva, controles de reprodução e foco em experiência do usuário.',
+          tags: ['Figma', 'HTML', 'CSS', 'JavaScript'],
+          img: 'img/projeto0.PNG',   
+          link: 'https://beatrizcavalcante-dev.github.io/WebMusic/'  
+      },
 
-    {
-        title: 'Jogo Space Shooter',
-        desc: 'Jogo de nave espacial desenvolvido em Python com Pygame, criado como projeto de estudo. O código-fonte e a documentação estão disponíveis no GitHub.',
-        tags: ['Python', 'Pygame', 'StarUML'],
-        img: 'img/jogo.png',
-        link: 'https://github.com/beatrizcavalcante-dev/game-beatriz-cavalcante'
-    },
+      {
+        title: 'Stock — Sistema de Estoque',
+        desc: 'Sistema web full-stack para gerenciamento de estoque, com dashboard, cadastro de produtos, controle de entradas e saídas, histórico de movimentações e alertas de estoque baixo.',
+        tags: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Express', 'SQLite'],
+        img: 'img/projeto7.PNG',
+        link: 'https://beatrizcavalcante-dev.github.io/estoque-app/'
+      },  
 
-    {
-        title: 'Landing E-commerce',
-        desc: 'Página de apresentação para startup de tecnologia com design moderno e responsivo.',
-        tags: ['HTML', 'CSS', 'JavaScript'],
-        img: 'img/projeto1.PNG',
-        link: 'https://beatrizcavalcante-dev.github.io/Landing-e-commerce/'
-    },
+      {
+          title: 'Jogo Space Shooter',
+          desc: 'Jogo de nave espacial desenvolvido em Python com Pygame como projeto de estudo, com foco em lógica de programação, movimentação e mecânicas de jogo. O código-fonte e a documentação estão disponíveis no GitHub.',
+          tags: ['Python', 'Pygame', 'StarUML'],
+          img: 'img/jogo.png',
+          link: 'https://github.com/beatrizcavalcante-dev/game-beatriz-cavalcante'
+      },
 
-    {
-        title: 'Protótipo App Streaming',
-        desc: 'Protótipo acadêmico de interface para aplicativo de streaming, desenvolvido no Figma com foco em UX/UI e organização visual. Projeto não oficial e sem vínculo com marcas comerciais.',
-        tags: ['Figma', 'Design'],
-        img: 'img/projeto3.PNG',
-        link: 'https://www.figma.com/design/tIgTY8awAO0lw6nQLN2LN8/Prot%C3%B3tipo-Crunchyroll?node-id=0-1&m=dev&t=77SNFcqhYkpqY5N9-1'
-    },
-    {
-        title: 'App Streaming',
-        desc: 'Projeto acadêmico de aplicativo de streaming desenvolvido para a faculdade, com foco em interface, navegação e experiência do usuário. Projeto não oficial e sem vínculo com marcas comerciais.',
-        tags: ['Figma', 'Design', 'HTML', 'CSS', 'JavaScript'],
-        img: 'img/projeto5.PNG',
-        link: 'https://www.figma.com/design/tIgTY8awAO0lw6nQLN2LN8/Prot%C3%B3tipo-Crunchyroll?node-id=0-1&m=dev&t=77SNFcqhYkpqY5N9-1'
-    },
-    {
-        title: 'Protótipo Portfólio',
-        desc: 'Criação de designer do meu primeiro portfólio.',
-        tags: ['Figma', 'Design'],
-        img: 'img/projeto4.PNG',
-        link: 'https://www.figma.com/design/MWYM1n4e1nvPY9u0pgNOgT/Portf%C3%B3lio?node-id=0-1&m=dev&t=9bnrXbFwHdDdwnsO-1'
-    },
-    {
-        title: 'Primeiro Portfólio',
-        desc: 'Interface finalizada após criação no Figma',
-        tags: ['Figma', 'Design', 'HTML', 'CSS', 'JavaScript'],
-        img: 'img/projeto6.PNG',
-        link: 'https://beatrizcavalcante-dev.github.io/Portfolio-BeatrizC/'
-    },
+      {
+          title: 'Landing E-commerce',
+          desc: 'Landing page desenvolvida em HTML, CSS e JavaScript para apresentação de uma startup de tecnologia, com layout responsivo e foco em organização visual e experiência do usuário.',
+          tags: ['HTML', 'CSS', 'JavaScript'],
+          img: 'img/projeto1.PNG',
+          link: 'https://beatrizcavalcante-dev.github.io/Landing-e-commerce/'
+      },
+
+      {
+          title: 'Protótipo App Streaming',
+          desc: 'Protótipo acadêmico de interface para aplicativo de streaming, desenvolvido no Figma com foco em UX/UI e organização visual. Projeto não oficial e sem vínculo com marcas comerciais.',
+          tags: ['Figma', 'Design'],
+          img: 'img/projeto3.PNG',
+          link: 'https://www.figma.com/design/tIgTY8awAO0lw6nQLN2LN8/Prot%C3%B3tipo-Crunchyroll?node-id=0-1&m=dev&t=77SNFcqhYkpqY5N9-1'
+      },
+
+      {
+          title: 'App Streaming',
+          desc: 'Projeto acadêmico de aplicativo de streaming desenvolvido para a faculdade, com foco em interface, navegação e experiência do usuário. Projeto não oficial e sem vínculo com marcas comerciais.',
+          tags: ['Figma', 'Design', 'HTML', 'CSS', 'JavaScript'],
+          img: 'img/projeto5.PNG',
+          link: 'https://www.figma.com/design/tIgTY8awAO0lw6nQLN2LN8/Prot%C3%B3tipo-Crunchyroll?node-id=0-1&m=dev&t=77SNFcqhYkpqY5N9-1'
+      },
+
+      {
+          title: 'Protótipo Portfólio',
+          desc: 'Protótipo do meu primeiro portfólio desenvolvido no Figma, com foco em identidade visual, organização das seções e experiência de navegação.',
+          tags: ['Figma', 'Design'],
+          img: 'img/projeto4.PNG',
+          link: 'https://www.figma.com/design/MWYM1n4e1nvPY9u0pgNOgT/Portf%C3%B3lio?node-id=0-1&m=dev&t=9bnrXbFwHdDdwnsO-1'
+      },
+
+      {
+          title: 'Primeiro Portfólio',
+          desc: 'Primeiro portfólio desenvolvido a partir de um protótipo criado no Figma, com implementação em HTML, CSS e JavaScript e foco em responsividade e apresentação profissional.',
+          tags: ['Figma', 'Design', 'HTML', 'CSS', 'JavaScript'],
+          img: 'img/projeto6.PNG',
+          link: 'https://beatrizcavalcante-dev.github.io/Portfolio-BeatrizC/'
+      },
     ];
 
     let current = 0;
@@ -233,6 +246,7 @@ const svg = document.getElementById('particles');
     }
 
     function goTo(n) { current = n; renderProject(); }
+    
     document.getElementById('prev-btn').onclick = () => goTo((current - 1 + projects.length) % projects.length);
     document.getElementById('next-btn').onclick = () => goTo((current + 1) % projects.length);
 
@@ -243,7 +257,7 @@ const svg = document.getElementById('particles');
       '#9b4de0',
       '#c9b8f0',
       '#ffffff'
-    ]
+    ];
 
     if (window.innerWidth > 768) {
 

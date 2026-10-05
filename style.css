@@ -333,40 +333,9 @@ nav ul {
   object-position:50% 5%; 
   filter:brightness(.95) contrast(1.05);
   display:block;
-}
-    
-.cv-btn { 
-  display:inline-flex; 
-  align-items:center; 
-  gap:.5rem; 
-  padding:.35rem 1rem; 
-  border-radius:.35rem; 
-  font-family: var(--font-mono);
-  font-size:.72rem; 
-  letter-spacing:.05em; color:var(--lavender); 
-  background:#9b4de020; border:1px solid #9b4de050; 
-  cursor:pointer; 
-  transition:all .2s; 
-}
-
-.cv-btn:hover { 
-  background:#d63ad430; 
-  border-color:var(--pink); 
-  box-shadow:0 0 10px #d63ad440; 
-}
+} 
 
 .about-bio { flex:1;}
-
-.about-bio h3 { 
-  font-family: var(--font-title); 
-  font-size:1.75rem; 
-  font-weight:700; 
-  color:var(--lavender);
-  text-shadow:0 0 15px #9b4de060; 
-  margin-bottom:1.25rem; 
-}
-
-.about-bio h3 span { text-shadow:0 0 20px var(--pink),0 0 40px #d63ad480;}
 
 .about-bio p { 
   font-size:.9rem; 
@@ -597,8 +566,6 @@ nav ul {
 
 .skill-item:hover .skill-name { color:var(--lavender); }
 
-.skill-tooltip { display:none !important; }
-
 /*CONTATO*/
 
 #contato { 
@@ -816,9 +783,7 @@ nav ul {
     height:285px; 
   }
 
-  .about-bio {width:100%;}
-
-  .about-bio h3 {font-size:1.4rem;}
+  .about-bio {width:100%;} 
     
   .skills-grid {grid-template-columns:repeat(2,1fr); gap:2rem;}
         
@@ -863,9 +828,7 @@ nav ul {
 
   #sobre .about-grid {padding:0; gap:1.5rem;}
         
-  .photo-card {width:160px; height:253px;}
-        
-  .about-bio h3 {font-size:1.25rem;}
+  .photo-card {width:160px; height:253px;}       
 
   .about-bio p {font-size:.85rem;}
         
@@ -883,7 +846,7 @@ nav ul {
   
   .skills-grid--learning{
     max-width:100%;
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
   }
   
   .contact-terminal{
@@ -914,4 +877,22 @@ nav ul {
   .footer-copy {font-size:.65rem;}
   
   #back-top {bottom:20px; right:20px;}
+}
+
+/* ACESSIBILIDADE */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
