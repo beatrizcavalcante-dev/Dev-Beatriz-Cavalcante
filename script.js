@@ -33,7 +33,7 @@ const svg = document.getElementById('particles');
     
     const typedEl = document.getElementById('typed-text');
 
-    const fullText = 'Desenvolvedora Front-End em Formação';
+    const fullText = 'Desenvolvedora Front-End';
 
     let i = 0, deleting = false;
     

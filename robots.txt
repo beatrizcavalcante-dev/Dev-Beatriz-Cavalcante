@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://beatrizcavalcante-dev.github.io/Dev-Beatriz-Cavalcante/sitemap.xml
