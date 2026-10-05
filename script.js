@@ -156,7 +156,7 @@ const svg = document.getElementById('particles');
 
     {
         title: 'Jogo Space Shooter',
-        desc: 'Jogo de Nave Espacial desenvolvido com Pygame e Python. Sendo possível também baixar no seu PC',
+        desc: 'Jogo de nave espacial desenvolvido em Python com Pygame, criado como projeto de estudo. O código-fonte e a documentação estão disponíveis no GitHub.',
         tags: ['Python', 'Pygame', 'StarUML'],
         img: 'img/jogo.png',
         link: 'https://github.com/beatrizcavalcante-dev/game-beatriz-cavalcante'
@@ -172,14 +172,14 @@ const svg = document.getElementById('particles');
 
     {
         title: 'Protótipo App Streaming',
-        desc: 'Landing page de alto impacto para e-commerce — layout responsivo, hierarquia visual estratégica e foco total em conversão.',
+        desc: 'Protótipo acadêmico de interface para aplicativo de streaming, desenvolvido no Figma com foco em UX/UI e organização visual. Projeto não oficial e sem vínculo com marcas comerciais.',
         tags: ['Figma', 'Design'],
         img: 'img/projeto3.PNG',
         link: 'https://www.figma.com/design/tIgTY8awAO0lw6nQLN2LN8/Prot%C3%B3tipo-Crunchyroll?node-id=0-1&m=dev&t=77SNFcqhYkpqY5N9-1'
     },
     {
         title: 'App Streaming',
-        desc: 'Protótipo de Aplicativo Streaming Finalizado. Desenvolvido para trabalho da Faculdade.',
+        desc: 'Projeto acadêmico de aplicativo de streaming desenvolvido para a faculdade, com foco em interface, navegação e experiência do usuário. Projeto não oficial e sem vínculo com marcas comerciais.',
         tags: ['Figma', 'Design', 'HTML', 'CSS', 'JavaScript'],
         img: 'img/projeto5.PNG',
         link: 'https://www.figma.com/design/tIgTY8awAO0lw6nQLN2LN8/Prot%C3%B3tipo-Crunchyroll?node-id=0-1&m=dev&t=77SNFcqhYkpqY5N9-1'
